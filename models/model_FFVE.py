@@ -34,8 +34,8 @@ class FactorizedChannelMixing(nn.Module):
 
         return self.channel_mixing(x)
 
-# MixerBlock
-class MixerBlock(nn.Module):
+# FTCF Block
+class FTCFBlock(nn.Module):
     def __init__(self, configs, tokens_dim, channels_dim, tokens_hidden_dim, channels_hidden_dim, fac_C, norm_flag):
         super().__init__()
         self.configs = configs
@@ -70,7 +70,7 @@ class Encoder(nn.Module):
         self.channels_hidden_dim = [2, 7] # MLP of channel
 
         self.mlp_blocks = nn.ModuleList([
-            MixerBlock(configs, sequence_length, input_dim, self.hidden_num, self.channels_hidden_dim, configs.fac_C, configs.norm) for _ in range(configs.e_layers)
+            FTCFBlock(configs, sequence_length, input_dim, self.hidden_num, self.channels_hidden_dim, configs.fac_C, configs.norm) for _ in range(configs.e_layers)
         ])
         self.dropout = nn.Dropout(0.5)
         if self.configs.long_res:

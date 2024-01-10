@@ -22,7 +22,7 @@ We propose a Factorized temporal-channel fusion and Feature fusion based Variati
 ## Requirements
 Install Python>=3.7, PyTorch>=1.7.0.
 ```
-matplotlib==3.5.2
+matplotlib>=3.5.2
 numpy>=1.22.3
 pandas>=1.4.3
 scikit-learn>=1.0.2

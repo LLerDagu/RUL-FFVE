@@ -80,7 +80,7 @@ def gen_data_wrapper(df, sequence_length, columns, unit_nrs=np.array([])):
     if unit_nrs.size <= 0:
         unit_nrs = df['unit_nr'].unique()
         
-    data_gen = (list(gen_train_data(df[df['unit_nr']==unit_nr], sequence_length, columns))  # batch_size的划分只在同编号发动机范围内
+    data_gen = (list(gen_train_data(df[df['unit_nr']==unit_nr], sequence_length, columns))
                for unit_nr in unit_nrs)
     data_array = np.concatenate(list(data_gen)).astype(np.float32)
     return data_array
@@ -163,7 +163,7 @@ def get_data(dataset, sensors, sequence_length, alpha, threshold):
 
     # 6. scale with respect to the operating condition
     # 'op_cond'
-    X_train_pre = add_operating_condition(train.drop(drop_sensors, axis=1)) # train.drop(drop_sensors, axis=1)删除不使用的传感器
+    X_train_pre = add_operating_condition(train.drop(drop_sensors, axis=1))
     X_test_pre = add_operating_condition(test.drop(drop_sensors, axis=1))
     # Z-score
     X_train_pre, X_test_pre = condition_scaler(X_train_pre, X_test_pre, sensors)
@@ -204,7 +204,7 @@ def get_oneUnitData(dataset, sensors, sequence_length, alpha, threshold, step=1,
     index_names = ['unit_nr', 'time_cycles']
     setting_names = ['setting_1', 'setting_2', 'setting_3']
     sensor_names = ['s_{}'.format(i + 1) for i in range(0, 21)]
-    col_names = index_names + setting_names + sensor_names  # 表头：数据集每一列的"属性名"
+    col_names = index_names + setting_names + sensor_names
 
     # 3. data readout
     # 3.1 training Data: comprising both training and validation sets
