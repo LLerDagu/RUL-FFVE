@@ -1,6 +1,6 @@
 # RUL-FFVE
 
-<p align="center">
+<p>
       <a href="https://www.python.org/">
         <img src="https://img.shields.io/badge/Python-3.8.13-2C73D2" /></a>
        <a href= "https://pytorch.org/">
