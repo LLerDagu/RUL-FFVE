@@ -19,6 +19,11 @@ The documentation is currently being updated.
 ![FFVE](./pics/3_FFVE.png)
 We propose a Factorized temporal-channel fusion and Feature fusion based Variational Encoding (FFVE) for interpretable RUL prediction. By utilizing the factorization operation, we construct the Factorized Temporal-Channel Fusion (FTCF) block to learn temporal and channel dependencies, thereby reducing redundancy between channels. Through the feature fusion operations which mix original information with extracted feature information, we augment the original information that is lost during the deep network learning process, consequently avoiding performance degradation caused by increasing network depth. Through the above encoding process, sensor data is effectively compressed into a 3D latent space for predicting and interpreting the equipment degradation process.
 
+## ⚠ Important Update: 2024-01-22
+We've identified a significant bug in our code, originating from other open-source code, thanks to [Lunar_Li](https://github.com/Lunarli). This error will impact the RMSE calculation on the NASA turbofan engine test set, but it won't affect the SCORE metric or any analytical conclusions presented in the paper. We have successfully fixed the error.
+
+We will update the corrected metric results later on!
+
 ## Requirements
 Install Python>=3.7, PyTorch>=1.7.0.
 ```

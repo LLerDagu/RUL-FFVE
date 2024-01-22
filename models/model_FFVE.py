@@ -156,6 +156,16 @@ def total_loss(out, tr_y, mu, var):
     loss = kl_loss + rmse_loss
     return loss, kl_loss, rmse_loss
 
+def total_loss_forTest(out, tr_y, mu, var):
+    """
+    Computes the VAE loss function.
+    KL(N(\mu, \sigma), N(0, 1)) = \log \frac{1}{\sigma} + \frac{\sigma^2 + \mu^2}{2} - \frac{1}{2}
+    """
+    kl_loss = torch.mean(-0.5 * torch.sum(1 + var - mu ** 2 - var.exp(), dim=1), dim=0)
+    rmse_loss = F.mse_loss(out, tr_y) + 1e-6
+    loss = kl_loss + rmse_loss
+    return loss, kl_loss, rmse_loss
+
 if __name__ == '__main__':
     device = 'cuda:0'
     input = torch.ones([128, 30, 5]).to(device)

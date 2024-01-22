@@ -1,5 +1,5 @@
 import utils
-from models.model_FFVE import Encoder, Decoder, reparameterize, total_loss
+from models.model_FFVE import Encoder, Decoder, reparameterize, total_loss, total_loss_forTest
 import torch
 from torch.utils.data import DataLoader
 import numpy as np
@@ -213,12 +213,14 @@ if __name__ == "__main__":
                 out = decoder(z).view(-1)
 
             # loss function
-            loss, kl_loss, rmse_loss = total_loss(out, test_y, mu, var)
+            loss, kl_loss, rmse_loss = total_loss_forTest(out, test_y, mu, var)
 
             # record loss
             test_loss += loss / len(test_loader)
             test_rmse += rmse_loss.item() / len(test_loader)
 
+        # RMSE
+        test_rmse = np.sqrt(test_rmse)
         # Score
         mu, var = encoder(torch.tensor(x_test).to(device))
         z = reparameterize(mu, var)
