@@ -22,7 +22,15 @@ We propose a Factorized temporal-channel fusion and Feature fusion based Variati
 ## ⚠ Important Update: 2024-01-22
 We've identified a significant bug in our code, originating from other open-source code, thanks to [Lunar_Li](https://github.com/Lunarli). This error will impact the RMSE calculation on the NASA turbofan engine test set, but it won't affect the SCORE metric or any analytical conclusions presented in the paper. We have successfully fixed the error.
 
-We will update the corrected metric results later on!
+The updated data here is obtained through a new device. Therefore, the SCORE may experience slight variations compared to the original text.
+
+
+| Method         | FD001      |             | FD002       |             | FD003      |             | FD004       |              |
+| :-------------: | :---------: | :----------: | :----------: | :----------: | :---------: | :----------: | :----------: | :-----------: |
+|                | RMSE       | SCORE       | RMSE        | SCORE       | RMSE       | SCORE       | RMSE        | SCORE        |
+| **FFVE**       | 12.31     | 280.21     | **12.55**  | **772.17** | 12.43     | 302.1      | **14.08**  | **1149.03** |
+
+Detailed paper errata can be found [here](https://github.com/LLerDagu/RUL-FFVE/blob/main/Benchmark.md).
 
 ## Requirements
 Install Python>=3.7, PyTorch>=1.7.0.
