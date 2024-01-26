@@ -2,6 +2,13 @@
 - To facilitate subsequent research, we have provided extensive comparative results for various methods.
 - If there are any bugs or paper errata, we will promptly update them here!
 
+Note: 
+Due to the inability to use the equipment mentioned in the paper, we used a new device to compute the results.
+Therefore, there may be some variations in SCORE compared to the original results (SCORE will remain unchanged if the same equipment is used). 
+If you need to make performance comparisons, you can refer to these new results.
+
+Furthermore, from the experimental results, all the conclusions mentioned in the paper still hold true, so there is no need to worry about any textual errors in the paper.
+
 ## Table 4
 Comparison of the proposed method FFVE with SOTA methods on the C-MAPSS turbofan engine dataset in terms of RMSE and SCORE, where lower values indicating better performance. The best results are highlighted in **bold** and the second-best results are in _italics_. The IMP shows the improvement of our method over the best result of the SOTA methods.
 
