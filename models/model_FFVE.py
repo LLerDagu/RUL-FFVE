@@ -90,16 +90,16 @@ class Encoder(nn.Module):
 
     def forward(self, x):
         # shape(x) = (batch_size, seq_len=30, input_dim=14)
-        # 1. Mixer
-        mixer_x = x
+        # 1. FTCF blocks
+        ftcf_x = x
         for block in self.mlp_blocks:
-            mixer_x = block(mixer_x)
+            ftcf_x = block(ftcf_x)
 
         # 2. residual
         res = x.transpose(1, 2).reshape(x.size(0), -1)
 
-        # 4. Sample mu and var
-        faltten_x = mixer_x.transpose(1, 2).reshape(mixer_x.size(0), -1)
+        # 3. sample mu and var
+        faltten_x = ftcf_x.transpose(1, 2).reshape(ftcf_x.size(0), -1)
         if self.configs.long_res:
             faltten_x = torch.cat([res, faltten_x], dim=-1) # concat LongRes
         faltten_x = self.dropout(faltten_x) # dp=0.5

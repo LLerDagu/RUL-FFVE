@@ -18,7 +18,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--save_dir', type=str, default='./checkpoint/FD001/FFVE_test/op_4')
     parser.add_argument('--dataset', type=str, default='FD001')
-    parser.add_argument('--itr', type=int, default=5)
+    parser.add_argument('--itr', type=int, default=5, help='experiments times')
     parser.add_argument('--threshold', type=int, default=125)
     parser.add_argument('--latent_dim', type=int, default=3)
     parser.add_argument('--batch_size', type=int, default=128)
